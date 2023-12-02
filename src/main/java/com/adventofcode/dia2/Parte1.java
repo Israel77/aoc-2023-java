@@ -1,27 +1,26 @@
-package com.adventofcode.dia1;
+package com.adventofcode.dia2;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.adventofcode.Parser;
 import com.adventofcode.Solucao;
 
-public class Parte2 implements Solucao {
-    Parser<Optional<Integer>> combinarDigitos = new CombinarPrimeiroEUltimoDigito();
-    Parser<String> transformarPalavras = new TraduzirPalavrasParaDigitos();
+public class Parte1 implements Solucao {
+    Parser parser;
 
     public static void main(String[] args) {
-        var solver = new Parte2();
-        var filePath = "entrada/dia-1.txt";
+        var solver = new Parte1();
+        var filePath = "input/day-1.txt";
 
         try {
             ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
             InputStream inputStream = classLoader.getResourceAsStream(filePath);
 
-            String content = new BufferedReader(new InputStreamReader(inputStream)).lines()
+            String content = new BufferedReader(new InputStreamReader(inputStream))
+                    .lines()
                     .collect(Collectors.joining("\n"));
 
             System.out.println(solver.resolver(content));
@@ -32,10 +31,8 @@ public class Parte2 implements Solucao {
 
     @Override
     public String resolver(String input) {
-        return String.valueOf(input.lines()
-                .map(transformarPalavras::parse)
-                .map(combinarDigitos::parse)
-                .mapToInt(v -> v.orElse(0))
-                .sum());
+        // TODO
+        return new String();
     }
+
 }

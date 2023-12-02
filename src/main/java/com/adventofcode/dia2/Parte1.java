@@ -3,17 +3,20 @@ package com.adventofcode.dia2;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import com.adventofcode.Parser;
 import com.adventofcode.Solucao;
+import com.adventofcode.dia1.ExtrairQuantidades;
 
 public class Parte1 implements Solucao {
-    Parser parser;
+    InterpretarGame interpretarGame = new InterpretarGame();
+    ExtrairQuantidades extrairQuantidades = new ExtrairQuantidades();
 
     public static void main(String[] args) {
         var solver = new Parte1();
-        var filePath = "input/day-1.txt";
+        var filePath = "entradas/dia-2.txt";
 
         try {
             ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -31,8 +34,12 @@ public class Parte1 implements Solucao {
 
     @Override
     public String resolver(String input) {
-        // TODO
-        return new String();
+        return Integer.toString(input.lines()
+                .map(line -> interpretarGame.parse(line).get())
+                .filter(game -> extrairQuantidades.parse(game.gameInfo())
+                        .stream()
+                        .allMatch(c -> c.validar()))
+                .mapToInt(game -> game.id())
+                .sum());
     }
-
 }

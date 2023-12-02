@@ -1,3 +1,3 @@
 .vscode
 target/**/*
-src/java/com/adventofcode/resources/entrada/*
+src/main/resources/entradas/*

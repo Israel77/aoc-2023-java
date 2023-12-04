@@ -3,18 +3,14 @@ package com.adventofcode.dia1;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Optional;
 import java.util.stream.Collectors;
-
-import com.adventofcode.Parser;
 import com.adventofcode.Solucao;
 
-public class Parte2 implements Solucao {
-    Parser<Optional<Integer>> combinarDigitos = new CombinarPrimeiroEUltimoDigito();
-    Parser<String> transformarPalavras = new TraduzirPalavrasParaDigitos();
+public class Dia1Parte1 implements Solucao {
+    CombinarPrimeiroEUltimoDigito parser = new CombinarPrimeiroEUltimoDigito();
 
     public static void main(String[] args) {
-        var solver = new Parte2();
+        var solver = new Dia1Parte1();
         var filePath = "entrada/dia-1.txt";
 
         try {
@@ -33,9 +29,9 @@ public class Parte2 implements Solucao {
     @Override
     public String resolver(String input) {
         return String.valueOf(input.lines()
-                .map(transformarPalavras::parse)
-                .map(combinarDigitos::parse)
+                .map(parser::parse)
                 .mapToInt(v -> v.orElse(0))
                 .sum());
     }
+
 }

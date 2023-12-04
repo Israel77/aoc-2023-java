@@ -5,15 +5,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.stream.Collectors;
 
-import com.adventofcode.Parser;
 import com.adventofcode.Solucao;
+import com.adventofcode.dia1.ExtrairQuantidades;
 
-public class Parte2 implements Solucao {
-    Parser parser;
+public class Dia2Parte1 implements Solucao {
+    InterpretarGame interpretarGame = new InterpretarGame();
+    ExtrairQuantidades extrairQuantidades = new ExtrairQuantidades();
 
     public static void main(String[] args) {
-        var solver = new Parte2();
-        var filePath = "input/day-1.txt";
+        var solver = new Dia2Parte1();
+        var filePath = "entradas/dia-2.txt";
 
         try {
             ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -31,7 +32,12 @@ public class Parte2 implements Solucao {
 
     @Override
     public String resolver(String input) {
-        // TODO
-        return new String();
+        return Integer.toString(input.lines()
+                .map(line -> interpretarGame.parse(line).get())
+                .filter(game -> extrairQuantidades.parse(game.gameInfo())
+                        .stream()
+                        .allMatch(c -> c.validar()))
+                .mapToInt(game -> game.id())
+                .sum());
     }
 }

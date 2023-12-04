@@ -3,19 +3,17 @@ package com.adventofcode.dia2;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.adventofcode.Solucao;
 import com.adventofcode.dia1.ExtrairQuantidades;
 
-public class Parte1 implements Solucao {
+public class Dia2Parte2 implements Solucao {
     InterpretarGame interpretarGame = new InterpretarGame();
     ExtrairQuantidades extrairQuantidades = new ExtrairQuantidades();
 
     public static void main(String[] args) {
-        var solver = new Parte1();
+        var solver = new Dia2Parte2();
         var filePath = "entradas/dia-2.txt";
 
         try {
@@ -36,10 +34,12 @@ public class Parte1 implements Solucao {
     public String resolver(String input) {
         return Integer.toString(input.lines()
                 .map(line -> interpretarGame.parse(line).get())
-                .filter(game -> extrairQuantidades.parse(game.gameInfo())
-                        .stream()
-                        .allMatch(c -> c.validar()))
-                .mapToInt(game -> game.id())
+                .map(game -> extrairQuantidades.parse(game.gameInfo()))
+                .map(list -> list.stream()
+                        .reduce((a, b) -> CubeSet.max(a, b))
+                        .get())
+                .mapToInt(cubes -> cubes.power())
                 .sum());
     }
+
 }

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class Parte1Test {
+public class Dia1Parte1Test {
     @Test
     void resolver_exemplo() {
         String testString = """
@@ -14,7 +14,7 @@ public class Parte1Test {
                 treb7uchet
                                 """;
 
-        var solucao = new Parte1();
+        var solucao = new Dia1Parte1();
 
         var esperado = "142";
 

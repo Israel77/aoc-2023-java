@@ -1,4 +1,4 @@
-package com.adventofcode.dia1;
+package com.adventofcode.dia2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.adventofcode.Parser;
-import com.adventofcode.dia2.CubeSet;
 
 public class ExtrairQuantidades implements Parser<List<CubeSet>> {
 

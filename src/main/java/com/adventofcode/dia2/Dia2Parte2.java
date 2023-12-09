@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.util.stream.Collectors;
 
 import com.adventofcode.Solucao;
-import com.adventofcode.dia1.ExtrairQuantidades;
 
 public class Dia2Parte2 implements Solucao {
     InterpretarGame interpretarGame = new InterpretarGame();

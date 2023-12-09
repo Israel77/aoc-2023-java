@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 import com.adventofcode.dia2.CubeSet;
+import com.adventofcode.dia2.ExtrairQuantidades;
 
 public class ExtrairQuantidadesTest {
     @Test
